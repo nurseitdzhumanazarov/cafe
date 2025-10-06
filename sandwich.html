@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandwich Category</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('ru')">Русский</button>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <h1 data-key="sandwichTitle">Sandwiches</h1>
+    <a href="index.html" class="back-btn" data-key="back">⬅ Back</a>
+  </header>
+
+  <!-- Sandwich Grid -->
+  <section class="menu-grid">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="https://static.tildacdn.one/tild3461-6630-4537-b862-353765393430/Group_68.png" alt="Ketchup Sandwich">
+      <h3 data-key="ketchupSandwich">Ketchup Sandwich</h3>
+      <p class="price" data-key="price1">95 som</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="https://static.tildacdn.one/tild3765-3364-4233-b966-646436363037/Group_67.png" alt="Chicken Sandwich">
+      <h3 data-key="chickenSandwich">Chicken Sandwich</h3>
+      <p class="price" data-key="price2">110 som</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <img src="https://static.tildacdn.one/tild6632-6230-4332-b833-343664386465/Group_69.png" alt="Mayonnaise Sandwich">
+      <h3 data-key="mayoSandwich">Mayonnaise Sandwich</h3>
+      <p class="price" data-key="price3">95 som</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <img src="https://www.mrkumpir.com/wp-content/uploads/2023/06/karisik-tost.png" alt="Tost">
+      <h3 data-key="tost">Tost</h3>
+      <p class="price" data-key="price4">80 som</p>
+    </div>
+
+  </section>
+
+  <!-- Translation Script -->
+  <script>
+    const translations = {
+      en: {
+        sandwichTitle: "Sandwiches",
+        back: "⬅ Home",
+        ketchupSandwich: "Ketchup Sandwich",
+        chickenSandwich: "Chicken Sandwich",
+        mayoSandwich: "Mayonnaise Sandwich",
+        tost: "Tost",
+        price1: "95 som",
+        price2: "110 som",
+        price3: "95 som",
+        price4: "80 som",
+      },
+      ru: {
+        sandwichTitle: "Сэндвичи",
+        back: "⬅ Домой",
+        ketchupSandwich: "Сэндвич с кетчупом",
+        chickenSandwich: "Куриный сэндвич",
+        mayoSandwich: "Сэндвич с майонезом",
+        tost: "Тост",
+        price1: "95 сом",
+        price2: "110 сом",
+        price3: "95 сом",
+        price4: "80 сом",
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

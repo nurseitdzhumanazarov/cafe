@@ -1,5 +1,70 @@
 /* ========== Global Reset & Base Styles ========== */
-* {
+* 
+
+
+
+/* Back button style */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* space between arrow and text */
+  text-decoration: none; /* remove underline */
+  font-size: 16px;
+  font-weight: 500;
+  color: #0aa1a7; /* teal/blue color */
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: #f1f9fa; /* soft background */
+}
+
+.back-btn:hover {
+  background: #0aa1a7; /* highlight */
+  color: white;
+  transform: translateX(-3px); /* small move left on hover */
+}
+
+
+
+
+
+.lang-switcher {
+  text-align: right;
+  padding: 0.5rem 1rem;
+}
+
+.lang-switcher button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f0f0f0;
+  transition: 0.3s;
+}
+
+.lang-switcher button:hover {
+  background: #3bb49d;
+  color: #fff;
+}
+
+
+// Change language function
+function setLanguage(lang) {
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.getAttribute("data-key");
+    el.textContent = translations[lang][key];
+  });
+}
+</script>
+
+
+
+
+
+
+
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -62,7 +127,7 @@ body {
   display: flex;
   overflow-x: auto; /* Scrollable if too many buttons */
   padding: 0.8rem 1rem;
-  background: #ffffff;
+  background: #f5eeee;
   border-bottom: 1px solid #ddd;
 }
 
@@ -70,7 +135,7 @@ body {
   margin-right: 0.5rem;
   padding: 0.5rem 1rem;
   border: none;
-  background: #f0f0f0;
+  background: #f1ecec;
   border-radius: 20px;
   cursor: pointer;
   font-size: 0.95rem;
@@ -91,8 +156,8 @@ body {
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  gap: 2rem;
+  padding: 2rem;
 }
 
 .card {
@@ -126,12 +191,12 @@ body {
   justify-content: space-between;
   padding: 0.3rem 0.7rem;
   font-size: 0.9rem;
-  color: #666;
+  color: #e4c3c3;
 }
 
 .price {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   padding: 0.5rem 0.7rem 0.8rem 0.7rem;
   color: #3bb49d;
 }
@@ -221,15 +286,62 @@ body {
 }
 .card img {
   width: 100%;
-  height: 200px;       /* 🔼 Increase height for bigger images */
-  object-fit: cover;   /* Keeps images nicely cropped */
+  height: 350px;       /* 🔼 Increase height for bigger images */
+  object-fit: contain;   /* Keeps images nicely cropped */
   border-bottom: 1px solid #f9f7f7; /* Light line between image and text */
 }
 .card {
   background: #f4f2f0;
-  border-radius: 15px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s, box-shadow 0.2s;
   padding-bottom: 0.8rem; /* 🔼 Add space below image for text */
+}
+/* === Sandwich page specific styles === */
+
+/* Make sandwich grid look neat */
+.menu-grid.sandwich-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Sandwich cards */
+.sandwich-grid .card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 9px rgba(0,0,0,0.1);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+/* Hover effect for sandwich cards */
+.sandwich-grid .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Images inside sandwich cards */
+.sandwich-grid .card img {
+  width: 100%;
+  height: 160px;        /* same height for all sandwich images */
+  object-fit: cover;    /* crop nicely, no stretch */
+  border-bottom: 2px solid #eee;
+}
+
+/* Sandwich titles */
+.sandwich-grid .card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+/* Sandwich price text */
+.sandwich-grid .card .price {
+  font-weight: bold;
+  color: #e67e22;  /* orange color for sandwich prices */
+  font-size: 1.1rem;
 }

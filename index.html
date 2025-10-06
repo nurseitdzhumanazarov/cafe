@@ -8,9 +8,15 @@
 </head>
 <body>
 
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('ru')">Русский</button>
+  </div>
+
   <!-- Header -->
   <header class="header">
-    <h1>Menu</h1>
+    <h1 data-key="menuTitle">Menu</h1>
     <div class="cart">🛒</div>
   </header>
 
@@ -21,30 +27,29 @@
 
   <!-- Categories -->
   <nav class="categories">
-    <button class="active">All</button>
-    <button>Breakfast</button>
-    <button>Lunch</button>
-    <button>Treats</button>
-    <button>Dessert</button>
-   <a href="water.html" class="category-btn">Drinks</a>
-
+    <button class="active" data-key="all">All</button>
+    <a href="sandwich.html" class="category-btn" data-key="drinks">Sandwiches</a>
+    <button data-key="lunch">Lunch</button>
+    <button data-key="treats">Treats</button>
+    <button data-key="dessert">Dessert</button>
+    <a href="water.html" class="category-btn" data-key="drinks">Drinks</a>
   </nav>
 
   <!-- Menu grid -->
   <section class="menu-grid">
     <div class="card">
       <img src="https://source.unsplash.com/300x200/?pancake" alt="Pear & Orange">
-      <h3>Pear & Orange</h3>
+      <h3 data-key="pearOrange">Pear & Orange</h3>
       <div class="info">
         <span>⏱️ 20 min</span>
         <span>⭐ 4.8</span>
       </div>
-      <p class="price">25.00$</p>
+      <p class="price" data-key="price25">25.00$</p>
     </div>
 
     <div class="card">
       <img src="https://source.unsplash.com/300x200/?mushroom" alt="Meat & Mushrooms">
-      <h3>Meat & Mushrooms</h3>
+      <h3 data-key="meatMushrooms">Meat & Mushrooms</h3>
       <div class="info">
         <span>⏱️ 30 min</span>
         <span>⭐ 5.0</span>
@@ -54,7 +59,7 @@
 
     <div class="card">
       <img src="https://source.unsplash.com/300x200/?toast" alt="Egg & Bread">
-      <h3>Egg & Bread</h3>
+      <h3 data-key="eggBread">Egg & Bread</h3>
       <div class="info">
         <span>⏱️ 10 min</span>
         <span>⭐ 4.7</span>
@@ -64,7 +69,7 @@
 
     <div class="card">
       <img src="https://source.unsplash.com/300x200/?dessert" alt="Sweet Pancake">
-      <h3>Sweet Pancake</h3>
+      <h3 data-key="sweetPancake">Sweet Pancake</h3>
       <div class="info">
         <span>⏱️ 10 min</span>
         <span>⭐ 4.9</span>
@@ -79,6 +84,47 @@
     <button>📖 Orders</button>
     <button>👤 Profile</button>
   </footer>
+
+  <!-- Translation Script -->
+  <script>
+  const translations = {
+    en: {
+      menuTitle: "Menu",
+      all: "All",
+      breakfast: "Breakfast",
+      lunch: "Lunch",
+      treats: "Treats",
+      dessert: "Dessert",
+      drinks: "Drinks",
+      pearOrange: "Pear & Orange",
+      meatMushrooms: "Meat & Mushrooms",
+      eggBread: "Egg & Bread",
+      sweetPancake: "Sweet Pancake",
+      price25: "25.00$"
+    },
+    ru: {
+      menuTitle: "Меню",
+      all: "Все",
+      breakfast: "Завтрак",
+      lunch: "Обед",
+      treats: "Угощения",
+      dessert: "Десерт",
+      drinks: "Напитки",
+      pearOrange: "Груша и апельсин",
+      meatMushrooms: "Мясо и грибы",
+      eggBread: "Яйцо и хлеб",
+      sweetPancake: "Сладкий блин",
+      price25: "25.00₽"
+    }
+  };
+
+  function setLanguage(lang) {
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
+      el.textContent = translations[lang][key];
+    });
+  }
+  </script>
 
 </body>
 </html>
